@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,7 @@ import static com.xiajue.count.count.constant.TypeModel.COUNT_DIVISION;
 
 public class CountActivity extends BaseActivity implements View.OnClickListener {
 
+    private static final int MENU_ITEM_ID_PAUSE = 557;
     private NumberKeyboardView mKeyboardView;
     private EditText mEditText;
     private Button mNextButton;
@@ -43,6 +45,7 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
     private TextView mUpState;
     //...
     private CountTime mCountTime;
+    private MenuItem mPauseMenuItem;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -211,19 +214,6 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            inquiry();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onBackPressed() {
-        inquiry();
-    }
-
     private void inquiry() {
         stopCountTime();
         DialogManager.showInquiry(this, getString(R.string
@@ -241,10 +231,58 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         }, false);
     }
 
+    private void stopCountTime() {
+        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
+            mCountTime.stop();
+        }
+    }
+
+    private void reStartCountTime() {
+        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
+            mCountTime.reStart();
+        }
+    }
+
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        mPauseMenuItem = menu.add(0, MENU_ITEM_ID_PAUSE, 0, R.string.pause);
+        mPauseMenuItem.setIcon(R.mipmap.pause);
+        mPauseMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                inquiry();
+                break;
+            case MENU_ITEM_ID_PAUSE:
+                mPauseMenuItem.setIcon(R.mipmap.continue_icon);
+                pauseDialog();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void pauseDialog() {
         stopCountTime();
+        DialogManager.showInquiry(this, getString(R.string.pause_ing), new String[]{getString(R.string.conti),
+                getString(R.string.contin)},
+                new DialogInterface
+                        .OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mPauseMenuItem.setIcon(R.mipmap.pause);
+                        reStartCountTime();
+                    }
+                }, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mPauseMenuItem.setIcon(R.mipmap.pause);
+                        reStartCountTime();
+                    }
+                }, false);
     }
 
     @Override
@@ -253,10 +291,9 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         stopCountTime();
     }
 
-    private void stopCountTime() {
-        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
-            mCountTime.stop();
-        }
+    @Override
+    public void onBackPressed() {
+        inquiry();
     }
 
     @Override
@@ -265,9 +302,9 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         reStartCountTime();
     }
 
-    private void reStartCountTime() {
-        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
-            mCountTime.reStart();
-        }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopCountTime();
     }
 }

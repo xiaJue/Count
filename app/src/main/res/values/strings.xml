@@ -44,4 +44,8 @@
     <string name="jg">结果</string>
     <string name="ph">排行</string>
     <string name="up_t">上题:</string>
+    <string name="pause">暂停</string>
+    <string name="pause_ing">暂停中...点击继续</string>
+    <string name="conti">继续</string>
+    <string name="contin">continue</string>
 </resources>
