@@ -1,0 +1,291 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="false"
+    android:focusableInTouchMode="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_type"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/title_text_color"/>
+
+                    <RadioGroup
+                        android:id="@+id/main_type_radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <RadioButton
+                            android:id="@+id/main_radio_jj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:drawableRight="@mipmap/j"
+                            android:text="@string/jj"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <RadioButton
+                            android:id="@+id/main_radio_cc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:drawableRight="@mipmap/c"
+                            android:text="@string/cc"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <RadioButton
+                            android:id="@+id/main_radio_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:drawableRight="@mipmap/zh"
+                            android:text="@string/zh"
+                            android:textColor="@color/min_title_text_color"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_fw"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/title_text_color"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="horizontal">
+
+                        <com.xiajue.count.count.view.NoKeyboardEditText
+                            android:id="@+id/main_number_edit_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/edit_bg_color"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="@string/from"
+                            android:text="0"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/to"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <com.xiajue.count.count.view.NoKeyboardEditText
+                            android:id="@+id/main_number_edit_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/edit_bg_color"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="@string/to"
+                            android:text="100"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:id="@+id/main_type_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="30sp"/>
+
+
+                        <com.xiajue.count.count.view.NoKeyboardEditText
+                            android:id="@+id/main_number2_edit_from"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/edit_bg_color"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="@string/from"
+                            android:text="0"
+                            android:textSize="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/to"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <com.xiajue.count.count.view.NoKeyboardEditText
+                            android:id="@+id/main_number2_edit_to"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/edit_bg_color"
+                            android:focusable="false"
+                            android:gravity="center"
+                            android:hint="@string/to"
+                            android:text="100"
+                            android:textSize="20dp"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_model"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/title_text_color"/>
+
+                    <RadioGroup
+                        android:id="@+id/main_model_radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp">
+
+                        <RadioButton
+                            android:id="@+id/main_radio_js"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:text="@string/js"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <RadioButton
+                            android:id="@+id/main_radio_djs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:text="@string/djs"
+                            android:textColor="@color/min_title_text_color"/>
+
+                        <LinearLayout
+                            android:id="@+id/main_djs_edit_root"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="50dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <com.xiajue.count.count.view.NoKeyboardEditText
+                                android:id="@+id/main_djs_edit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/edit_bg_color"
+                                android:focusable="false"
+                                android:gravity="center"
+                                android:text="100"
+                                android:textSize="20dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="@string/mnwc"/>
+
+                        </LinearLayout>
+
+                        <RadioButton
+                            android:id="@+id/main_radio_bjs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:button="@null"
+                            android:drawableLeft="@drawable/settings_radio_bg"
+                            android:text="@string/bjs"
+                            android:textColor="@color/min_title_text_color"/>
+                    </RadioGroup>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/select_ts"
+                        android:textAppearance="?android:attr/textAppearanceLarge"
+                        android:textColor="@color/title_text_color"/>
+
+                    <SeekBar
+                        android:id="@+id/main_count_number_seekBar"
+                        style="@style/seekBarStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="10"/>
+
+                    <com.xiajue.count.count.view.NoKeyboardEditText
+                        android:id="@+id/main_count_number_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="20dp"
+                        android:background="@color/edit_bg_color"
+                        android:focusable="false"
+                        android:gravity="center"
+                        android:hint="@string/ts"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/main_start_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/start_but_selector"
+                    android:text="@string/start"
+                    android:textColor="@color/colorKey"
+                    android:textSize="15sp"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.xiajue.count.count.view.NumberKeyboardView
+            android:id="@+id/main_key_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#b0b0b0"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:keyBackground="@drawable/key_back"
+            android:keyTextColor="#000000"
+            android:shadowColor="#00000000"
+            android:shadowRadius="0"
+            android:visibility="gone"
+            app:pkvDeleteBackgroundColor="#d2d2d2"
+            app:pkvDeleteDrawable="@mipmap/delete"
+            app:pkvHideDrawable="@mipmap/pocket_close"/>
+    </LinearLayout>
+
+</ScrollView>

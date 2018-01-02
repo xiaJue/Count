@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#383B3D</color>
+    <color name="colorPrimaryDark">#2B2B2B</color>
+    <color name="colorAccent">#3994EF</color>
+    <color name="colorKey">#ffffff</color>
+    <color name="colorKey_pressed">#55ffffff</color>
+    <color name="edit_bg_color">#F0F0F0</color>
+    <color name="ph_text">#2b2b2b</color>
+    <color name="title_text_color">#21262A</color>
+    <color name="min_title_text_color">#3C3F41</color>
+    <color name="but">#4A4A4A</color>
+    <color name="but_pressed">#777777</color>
+</resources>

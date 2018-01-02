@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Count</string>
+
+    <string name="menu_main_phb">排行榜</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="select_type">选择类型</string>
+    <string name="cc">乘除</string>
+    <string name="zh">综合</string>
+    <string name="select_fw">选择范围:</string>
+    <string name="from">从</string>
+    <string name="to">至</string>
+    <string name="select_model">选择模式</string>
+    <string name="js">计时</string>
+    <string name="djs">倒计时</string>
+    <string name="mnwc">秒内完成</string>
+    <string name="bjs">不计时</string>
+    <string name="select_ts">选择题数</string>
+    <string name="ts">题数</string>
+    <string name="start">开始</string>
+    <string name="jj">加减</string>
+    <string name="time">时间:</string>
+    <string name="syts">剩余题数:</string>
+    <string name="count">计算</string>
+    <string name="next_t">下一题</string>
+    <string name="type">类型</string>
+    <string name="fw">范围:</string>
+    <string name="model">模式</string>
+    <string name="settings_tm">设置题目..</string>
+    <string name="ts_min">题数不能小于2</string>
+    <string name="veal_null">数值为空</string>
+    <string name="select_error">范围选择有误</string>
+    <string name="select_un_time">选择倒计时时间</string>
+    <string name="time_d">时间太短了吧...aer you ok?</string>
+    <string name="dt_ing">答题中...</string>
+    <string name="ok_finish">完成</string>
+    <string name="pleass_hd">请回答</string>
+    <string name="zt_ing_out">正在做题,是否离开?</string>
+    <string name="cf_result">除法结果四舍五入保留1位小数</string>
+    <string name="use_time">用时:</string>
+    <string name="djs_s">倒计时:</string>
+    <string name="wd">未答</string>
+    <string name="f">" 分"</string>
+    <string name="jg">结果</string>
+    <string name="ph">排行</string>
+    <string name="up_t">上题:</string>
+</resources>

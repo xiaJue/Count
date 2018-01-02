@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.xiajue.count.count.ui.MainActivity">
+    <item
+        android:id="@+id/menu_main_phb"
+        android:orderInCategory="100"
+        android:title="@string/menu_main_phb"
+        app:showAsAction="never"/>
+</menu>

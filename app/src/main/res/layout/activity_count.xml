@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:id="@+id/top_ll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp">
+
+        <TextView
+            android:id="@+id/count_time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="00:00"
+            android:textColor="@color/title_text_color"
+            android:textSize="25sp"/>
+
+        <TextView
+            android:id="@+id/count_number_surplus_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/min_title_text_color"
+            android:textSize="19sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/count_number_surplus_text"
+            android:text="@string/syts"
+            android:textColor="@color/min_title_text_color"
+            android:textSize="19sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_ll"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="86dp">
+
+        <LinearLayout
+            android:id="@+id/count_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/count_info_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/title_text_color"
+                android:textSize="30sp"/>
+
+            <com.xiajue.count.count.view.NoKeyboardEditText
+                android:id="@+id/count_number_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:hint="@string/count"
+                android:textColor="@color/min_title_text_color"
+                android:textSize="28sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/count_cf_ts_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/count_ll"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/cf_result"
+            android:textColor="@color/min_title_text_color"
+            android:visibility="invisible"/>
+
+        <LinearLayout
+            android:id="@+id/count_up_state_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/count_cf_ts_text"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/up_t"
+                android:textColor="@color/min_title_text_color"/>
+
+            <TextView
+                android:id="@+id/count_up_state"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/count_cf_ts_text"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/min_title_text_color"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/count_next_but"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/start_but_selector"
+            android:text="@string/next_t"
+            android:textColor="@color/colorKey"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <com.xiajue.count.count.view.NumberKeyboardView
+        android:id="@+id/count_key_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#b0b0b0"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:keyBackground="@drawable/key_back"
+        android:keyTextColor="#000000"
+        android:shadowColor="#00000000"
+        android:shadowRadius="0"
+        app:pkvDeleteBackgroundColor="#d2d2d2"
+        app:pkvDeleteDrawable="@mipmap/delete"/>
+
+</RelativeLayout>
