@@ -17,11 +17,12 @@ public class ConfigHelper {
     private static final String KEY_NUMBER_TO = "COUNT_NUMBER_TO";
     private static final String KEY_COUNT_NUMBER = "COUNT_NUMBER";
     private static final String KEY_UN_COUNT_TIME_MAX = "UN_COUNT_TIME_MAX";
+    private static final String KEY_BLXS= "BLXS";
     private static final int INIT_FROM = 0;//默认的范围起始数字
     private static final int INIT_TO = 100;
     private static final int INIT_COUNT_NUMBER = 20;//默认的题目数量
     private static final int INIT_UN_COUNT_TIME = 120;//默认的倒计时秒数
-    public static final int COUNT_DIVISION_SAVE_DECIMAL = 1;//除法保留小数位
+    public static final int INIT_COUNT_DIVISION_SAVE_DECIMAL = 1;//除法保留小数位
 
     /**
      * 读取配置
@@ -34,7 +35,8 @@ public class ConfigHelper {
         numbers[1] = (int) SPUtils.get(context, KEY_NUMBER_TO, INIT_TO);
         int countNumber = (int) SPUtils.get(context, KEY_COUNT_NUMBER, INIT_COUNT_NUMBER);
         int unCountTimeMax = (int) SPUtils.get(context, KEY_UN_COUNT_TIME_MAX, INIT_UN_COUNT_TIME);
-        return new Config(type, model, numbers, countNumber, unCountTimeMax);
+        int blxs = (int) SPUtils.get(context, KEY_BLXS, INIT_COUNT_DIVISION_SAVE_DECIMAL);
+        return new Config(type, model, numbers, countNumber, unCountTimeMax,blxs);
     }
 
     /**
@@ -47,6 +49,7 @@ public class ConfigHelper {
         SPUtils.put(context, KEY_NUMBER_TO, config.numbers[1]);
         SPUtils.put(context, KEY_COUNT_NUMBER, config.countNumber);
         SPUtils.put(context, KEY_UN_COUNT_TIME_MAX, config.unCountTimeMax);
+        SPUtils.put(context, KEY_BLXS, config.blxs);
     }
 
     public static void setFractionTextColor(TextView tv, int fraction) {
@@ -65,16 +68,18 @@ public class ConfigHelper {
         public int[] numbers;
         public int countNumber;
         public int unCountTimeMax;
+        public int blxs;
 
         public Config() {
         }
 
-        public Config(int type, int model, int[] numbers, int countNumber, int unCountTimeMax) {
+        public Config(int type, int model, int[] numbers, int countNumber, int unCountTimeMax,int blxs) {
             this.type = type;
             this.model = model;
             this.numbers = numbers;
             this.countNumber = countNumber;
             this.unCountTimeMax = unCountTimeMax;
+            this.blxs = blxs;
         }
     }
 }

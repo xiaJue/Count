@@ -15,20 +15,23 @@ import static com.xiajue.count.count.constant.TypeModel.COUNT_SUBTRACTION;
 
 public class CountBuild {
     private int[] mNumbers, mNumbers2;
-    private int mType, mModel, mCountNumber;
+    private int mType, mModel, mCountNumber, mSaveDecimal;
 
-    public CountBuild initialize(int[] numbers,int[] numbers2, int type, int model, int countNumber) {
+    public CountBuild initialize(int[] numbers, int[] numbers2, int type, int model, int
+            countNumber, int blxs) {
         mNumbers = numbers;
         mNumbers2 = numbers2;
         mType = type;
         mModel = model;
         mCountNumber = countNumber;
+        this.mSaveDecimal = blxs;
         mRandom = new Random();
         return this;
     }
 
     public CountHandler build() {
         CountHandler handler = new CountHandler();
+        handler.setSaveDecimal(mSaveDecimal);
         List<CountHandler.Count> counts = new ArrayList<>();
         for (int i = 0; i < mCountNumber; i++) {
             CountHandler.Count count = new CountHandler.Count();

@@ -44,6 +44,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private ScrollView mScrollView;
     private View mDjsEditRoot;
     private EditText mDjsEdit;
+    private View mCCEditRoot;
+    private EditText mCCEdit;
     private TextView mTypeText;
 
     @Override
@@ -72,6 +74,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mDjsEditRoot.setVisibility(config.model == 2 ? View.VISIBLE : View.GONE);
         mTypeText.setText(getTypeKey(config.type == 1 ? COUNT_ADDITION : (config.type == 2 ?
                 COUNT_DIVISION : COUNT_ADDITION)));
+
+        mCCEdit.setText(String.valueOf(config.blxs));
+        mCCEditRoot.setVisibility(config.type == 2 ? View.VISIBLE : View.GONE);
     }
 
     /**
@@ -96,6 +101,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mScrollView = (ScrollView) findViewById(R.id.main_scrollView);
         mDjsEdit = (EditText) findViewById(R.id.main_djs_edit);
         mDjsEditRoot = findViewById(R.id.main_djs_edit_root);
+        mCCEdit = (EditText) findViewById(R.id.main_cc_edit);
+        mCCEditRoot = findViewById(R.id.main_cc_edit_root);
         mTypeText = (TextView) findViewById(R.id.main_type_text);
     }
 
@@ -141,7 +148,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 mDjsEditRoot.setVisibility(isChecked ? View.VISIBLE : View.GONE);
             }
         });
+        //乘除时候显示额外的控件
+        ((RadioButton) findViewById(R.id.main_radio_cc)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                mCCEditRoot.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+            }
+        });
         mDjsEdit.setOnClickListener(this);
+        mCCEdit.setOnClickListener(this);
         //.....
         mTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -184,7 +199,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 //.....
                 int countNumber = mCountNumberSeeBar.getProgress();
                 intent.putExtra("count_number", countNumber);
-                saveToConfig(type, model, numbers, countNumber, djsTime);
+                String blxsText = mCCEdit.getText().toString().trim();
+                int blxs = Integer.valueOf(blxsText);
+                intent.putExtra("blxs", blxs);
+                saveToConfig(type, model, numbers, countNumber, djsTime,blxs);
                 startActivity(intent);
                 break;
             case R.id.main_number_edit_from:
@@ -193,6 +211,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             case R.id.main_number2_edit_to:
             case R.id.main_count_number_edit:
             case R.id.main_djs_edit:
+            case R.id.main_cc_edit:
                 mKeyboardView.setIOnKeyboardListener(new MOnKeyboardListener((EditText) v) {
                     @Override
                     public void onShowKeyViewFinish() {
@@ -214,13 +233,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    private void saveToConfig(int type, int model, int[] numbers, int countNumber, int djsTime) {
+    private void saveToConfig(int type, int model, int[] numbers, int countNumber, int djsTime,int blxs) {
         ConfigHelper.Config config = new ConfigHelper.Config();
         config.type = type;
         config.model = model;
         config.numbers = numbers;
         config.countNumber = countNumber;
         config.unCountTimeMax = djsTime;
+        config.blxs = blxs;
         ConfigHelper.saveConfig(this, config);
     }
 

@@ -70,8 +70,9 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         mNumbers2[0] = intent.getIntExtra("from2", 1);
         mNumbers2[1] = intent.getIntExtra("to2", 100);
         mCountNumber = intent.getIntExtra("count_number", 1);
+        int blxs = intent.getIntExtra("blxs", 1);
         //build data list
-        mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber)
+        mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber,blxs)
                 .build();
         mHandler.mCountNumber = mCountNumber;
         mHandler.mModel = mModel;

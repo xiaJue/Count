@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.text.NumberFormat;
 import java.util.List;
 
-import static com.xiajue.count.count.constant.ConfigHelper.COUNT_DIVISION_SAVE_DECIMAL;
 import static com.xiajue.count.count.constant.TypeModel.COUNT_ADDITION;
 import static com.xiajue.count.count.constant.TypeModel.COUNT_DIVISION;
 import static com.xiajue.count.count.constant.TypeModel.COUNT_MULTIPLICATION;
@@ -35,6 +34,10 @@ public class CountHandler implements Serializable {
         mNumbers = numbers;
         mUseTime = useTime;
         mMaxTime = maxTime;
+    }
+
+    public void setSaveDecimal(int blxs) {
+        Count.saveDecimal = blxs;
     }
 
     public void setCounts(List<Count> counts) {
@@ -76,6 +79,7 @@ public class CountHandler implements Serializable {
         private int type;
         private float answer;
         private float userAnswer = -1;//用户回答的
+        private static int saveDecimal;//保留小数数量
 
         public float getUserAnswer() {
             return userAnswer;
@@ -91,6 +95,7 @@ public class CountHandler implements Serializable {
             }
             return subject;
         }
+
         public float getAnswer() {
             return answer;
         }
@@ -155,7 +160,7 @@ public class CountHandler implements Serializable {
                     }
                     answer = ((float) args1 / (float) args2);
                     NumberFormat nf = NumberFormat.getNumberInstance();
-                    nf.setMaximumFractionDigits(COUNT_DIVISION_SAVE_DECIMAL);
+                    nf.setMaximumFractionDigits(saveDecimal);
                     answer = Float.valueOf(nf.format(answer));//四舍五入结果保留两位小数
                     break;
             }

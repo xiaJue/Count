@@ -50,4 +50,6 @@
     <string name="contin">continue</string>
     <string name="refresh">刷新</string>
     <string name="about">关于</string>
+    <string name="cc_edit_info">除法结果四舍五入保留</string>
+    <string name="cc_edit_info_end">位小数</string>
 </resources>
