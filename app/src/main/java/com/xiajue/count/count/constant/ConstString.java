@@ -5,4 +5,5 @@ package com.xiajue.count.count.constant;
  */
 
 public class ConstString {
+    public static final String GIT_ABOUT_FILE_ADDRESS = "https://xiajue.github.io/Count/about.html";
 }

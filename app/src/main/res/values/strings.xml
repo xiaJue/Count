@@ -48,4 +48,6 @@
     <string name="pause_ing">暂停中...点击继续</string>
     <string name="conti">继续</string>
     <string name="contin">continue</string>
+    <string name="refresh">刷新</string>
+    <string name="about">关于</string>
 </resources>

@@ -28,6 +28,8 @@
             android:name=".ui.ResultActivity"/>
         <activity
             android:name=".ui.PHActivity"/>
+        <activity
+            android:name=".ui.AboutActivity"/>
     </application>
 
 </manifest>

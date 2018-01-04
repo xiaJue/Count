@@ -196,7 +196,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 mKeyboardView.setIOnKeyboardListener(new MOnKeyboardListener((EditText) v) {
                     @Override
                     public void onShowKeyViewFinish() {
-                        //软键盘动态弹出的错觉
                         mScrollView.fullScroll(ScrollView.FOCUS_DOWN);
                         v.setFocusable(true);
                         v.requestFocus();
@@ -204,7 +203,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                     @Override
                     public void onHideKeyEvent(View view) {
-                        //软键盘动态关闭的错觉
                         mScrollView.fullScroll(ScrollView.FOCUS_UP);
                         super.onHideKeyEvent(view);
                     }
@@ -301,6 +299,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 //打开排行榜界面
                 Intent intent = new Intent(this, PHActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.menu_main_about:
+                //打开关于界面
+                startActivity(new Intent(this, AboutActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);
