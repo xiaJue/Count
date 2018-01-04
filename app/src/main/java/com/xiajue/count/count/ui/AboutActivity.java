@@ -34,6 +34,10 @@ public class AboutActivity extends BaseActivity {
     }
 
     private void set() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.about);
+        //....
         mWebView.loadUrl(GIT_ABOUT_FILE_ADDRESS);
         WebSettings settings = mWebView.getSettings();
         settings.setJavaScriptEnabled(true);//支持javaScript
@@ -65,6 +69,9 @@ public class AboutActivity extends BaseActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
             case R.id.menu_about_refresh:
                 mWebView.setVisibility(View.GONE);
                 mProgressBar.setVisibility(View.VISIBLE);

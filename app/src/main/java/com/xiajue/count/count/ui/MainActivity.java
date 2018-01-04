@@ -9,9 +9,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.SeekBar;
@@ -20,6 +18,7 @@ import android.widget.Toast;
 
 import com.xiajue.count.count.R;
 import com.xiajue.count.count.constant.ConfigHelper;
+import com.xiajue.count.count.listener.MOnCheckChangeListener;
 import com.xiajue.count.count.listener.MOnKeyboardListener;
 import com.xiajue.count.count.listener.MSeekBarChangeListener;
 import com.xiajue.count.count.view.NoKeyboardEditText;
@@ -27,7 +26,6 @@ import com.xiajue.count.count.view.NumberKeyboardView;
 
 import static com.xiajue.count.count.constant.TypeModel.COUNT_ADDITION;
 import static com.xiajue.count.count.constant.TypeModel.COUNT_DIVISION;
-import static com.xiajue.count.count.constant.TypeModel.COUNT_MULTIPLICATION;
 import static com.xiajue.count.count.constant.TypeModel.getTypeKey;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
@@ -142,34 +140,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             }
         });
         //倒计时时候显示额外的控件
-        ((RadioButton) findViewById(R.id.main_radio_djs)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mDjsEditRoot.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            }
-        });
+        mModelGroup.setOnCheckedChangeListener(new MOnCheckChangeListener(mDjsEditRoot, new
+                int[]{R.id.main_radio_djs}));
         //乘除时候显示额外的控件
-        ((RadioButton) findViewById(R.id.main_radio_cc)).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mCCEditRoot.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            }
-        });
+        mTypeGroup.setOnCheckedChangeListener(new MOnCheckChangeListener(mCCEditRoot, new int[]{R
+                .id.main_radio_cc, R.id.main_radio_all}, mTypeText));
         mDjsEdit.setOnClickListener(this);
         mCCEdit.setOnClickListener(this);
-        //.....
-        mTypeGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.main_radio_jj) {
-                    mTypeText.setText(getTypeKey(COUNT_ADDITION));
-                } else if (checkedId == R.id.main_radio_cc) {
-                    mTypeText.setText(getTypeKey(COUNT_MULTIPLICATION));
-                } else if (checkedId == R.id.main_radio_all) {
-                    mTypeText.setText(getTypeKey(COUNT_ADDITION));
-                }
-            }
-        });
     }
 
     @Override
@@ -199,10 +176,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 //.....
                 int countNumber = mCountNumberSeeBar.getProgress();
                 intent.putExtra("count_number", countNumber);
-                String blxsText = mCCEdit.getText().toString().trim();
-                int blxs = Integer.valueOf(blxsText);
-                intent.putExtra("blxs", blxs);
-                saveToConfig(type, model, numbers, countNumber, djsTime,blxs);
+                String saveDecimalText = mCCEdit.getText().toString().trim();
+                int saveDecimal = Integer.valueOf(saveDecimalText);
+                intent.putExtra("saveDecimal", saveDecimal);
+                saveToConfig(type, model, numbers, countNumber, djsTime, saveDecimal);
                 startActivity(intent);
                 break;
             case R.id.main_number_edit_from:
@@ -233,7 +210,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
     }
 
-    private void saveToConfig(int type, int model, int[] numbers, int countNumber, int djsTime,int blxs) {
+    private void saveToConfig(int type, int model, int[] numbers, int countNumber, int djsTime,
+                              int blxs) {
         ConfigHelper.Config config = new ConfigHelper.Config();
         config.type = type;
         config.model = model;
@@ -259,7 +237,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, R.string.veal_null, Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (number[0] >= number[1]||number2[0] >= number2[1]) {
+        if (number[0] >= number[1] || number2[0] >= number2[1]) {
             Toast.makeText(this, R.string.select_error, Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -272,6 +250,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             int djsTime = Integer.valueOf(time);
             if (djsTime < 5) {
                 Toast.makeText(this, R.string.time_d, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+        if (mCCEditRoot.isShown()) {
+            String saveDecimalText = mCCEdit.getText().toString();
+            if (saveDecimalText.isEmpty()) {
+                Toast.makeText(this, R.string.settings_save_decimal, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            int saveDecimal = Integer.valueOf(saveDecimalText);
+            if (saveDecimal >= 5 || saveDecimal < 0) {
+                Toast.makeText(this, R.string.save_decimal_max, Toast.LENGTH_SHORT).show();
                 return false;
             }
         }

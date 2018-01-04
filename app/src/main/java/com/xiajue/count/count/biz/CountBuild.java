@@ -18,13 +18,13 @@ public class CountBuild {
     private int mType, mModel, mCountNumber, mSaveDecimal;
 
     public CountBuild initialize(int[] numbers, int[] numbers2, int type, int model, int
-            countNumber, int blxs) {
+            countNumber, int saveDecimal) {
         mNumbers = numbers;
         mNumbers2 = numbers2;
         mType = type;
         mModel = model;
         mCountNumber = countNumber;
-        this.mSaveDecimal = blxs;
+        this.mSaveDecimal = saveDecimal;
         mRandom = new Random();
         return this;
     }

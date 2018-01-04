@@ -36,8 +36,8 @@ public class CountHandler implements Serializable {
         mMaxTime = maxTime;
     }
 
-    public void setSaveDecimal(int blxs) {
-        Count.saveDecimal = blxs;
+    public void setSaveDecimal(int saveDecimal) {
+        Count.saveDecimal = saveDecimal;
     }
 
     public void setCounts(List<Count> counts) {

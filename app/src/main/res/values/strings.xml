@@ -52,4 +52,6 @@
     <string name="about">关于</string>
     <string name="cc_edit_info">除法结果四舍五入保留</string>
     <string name="cc_edit_info_end">位小数</string>
+    <string name="settings_save_decimal">未设置保留小数位</string>
+    <string name="save_decimal_max">建议范围0-5</string>
 </resources>
