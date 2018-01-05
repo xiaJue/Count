@@ -87,6 +87,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 .main_radio_all});
         mNumberFromEditText.setText(String.valueOf(config.numbers[0]));
         mNumberToEditText.setText(String.valueOf(config.numbers[1]));
+        mNumber2FromEditText.setText(String.valueOf(config.numbers2[0]));
+        mNumber2ToEditText.setText(String.valueOf(config.numbers2[1]));
         mModelGroup.check(R.id.main_radio_js);//为了触发changeListener
         setCheck(config.model, mModelGroup, new int[]{R.id.main_radio_js, R.id.main_radio_djs, R.id
                 .main_radio_bjs});
@@ -192,6 +194,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     }
                 });
             }
+
             @Override
             public void onHideKeyEvent(View view) {
                 mScrollView.fullScroll(ScrollView.FOCUS_UP);
@@ -210,6 +213,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     /**
      * 将用户设置的数据封装到intent中
+     *
      * @return
      */
     @NonNull
@@ -237,19 +241,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         String saveDecimalText = mCCEdit.getText().toString().trim();
         int saveDecimal = Integer.valueOf(saveDecimalText);
         intent.putExtra("saveDecimal", saveDecimal);
-        saveToConfig(type, model, numbers, countNumber, djsTime, saveDecimal);
+        saveToConfig(type, model, numbers,numbers2, countNumber, djsTime, saveDecimal);
         return intent;
     }
 
     /**
      * 将用户的设置保存起来
      */
-    private void saveToConfig(int type, int model, int[] numbers, int countNumber, int djsTime,
+    private void saveToConfig(int type, int model, int[] numbers, int[] numbers2, int
+            countNumber, int djsTime,
                               int saveDecimal) {
         ConfigHelper.Config config = new ConfigHelper.Config();
         config.type = type;
         config.model = model;
         config.numbers = numbers;
+        config.numbers2 = numbers2;
         config.countNumber = countNumber;
         config.unCountTimeMax = djsTime;
         config.saveDecimal = saveDecimal;
@@ -273,6 +279,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         }
         if (number[0] >= number[1] || number2[0] >= number2[1]) {
             Toast.makeText(this, R.string.select_error, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (number[1] >= ConfigHelper.NUMBER_MAX_INT || number2[1] >= ConfigHelper.NUMBER_MAX_INT) {
+            Toast.makeText(this, R.string.max_out+ConfigHelper.NUMBER_MAX_INT, Toast.LENGTH_SHORT).show();
             return false;
         }
         if (mDjsEdit.isShown()) {
@@ -350,5 +360,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mButton.setEnabled(true);//(防止多次点击)--恢复点击功能
     }
 }

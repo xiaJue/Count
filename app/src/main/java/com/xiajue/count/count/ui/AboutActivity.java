@@ -10,6 +10,7 @@ import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import com.xiajue.count.count.R;
+import com.xiajue.count.count.constant.ConfigHelper;
 import com.xiajue.count.count.utils.StringUtils;
 
 import static com.xiajue.count.count.constant.ConstString.GIT_ABOUT_FILE_ADDRESS;
@@ -56,7 +57,8 @@ public class AboutActivity extends BaseActivity {
                 if (i == 100) {
                     mProgressBar.setVisibility(View.GONE);
                     mWebView.setVisibility(View.VISIBLE);
-                    getSupportActionBar().setTitle(StringUtils.ellipsis(webView.getTitle(), 8));
+                    getSupportActionBar().setTitle(StringUtils.ellipsis(webView.getTitle(),
+                            ConfigHelper.ABOUT_TITLE_MAX_LENGTH));
                 }
             }
         });

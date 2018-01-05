@@ -24,6 +24,7 @@ import com.xiajue.count.count.utils.DialogManager;
 import com.xiajue.count.count.utils.StringUtils;
 import com.xiajue.count.count.view.NumberKeyboardView;
 
+import static com.xiajue.count.count.R.string.cf_result;
 import static com.xiajue.count.count.constant.TypeModel.COUNT_DIVISION;
 
 /**
@@ -51,8 +52,8 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_count);
-        getData();
         bindView();
+        getData();
         setEvents();
     }
 
@@ -75,6 +76,8 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber,
                 saveDecimal)
                 .build();
+        mCfTsTextView.setText(getString(cf_result) +saveDecimal + getString(R.string
+                .cf_result_end));
         mHandler.mCountNumber = mCountNumber;
         mHandler.mModel = mModel;
         mHandler.mType = mType;

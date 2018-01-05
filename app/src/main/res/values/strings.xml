@@ -36,7 +36,8 @@
     <string name="ok_finish">完成</string>
     <string name="pleass_hd">请回答</string>
     <string name="zt_ing_out">正在做题,是否离开?</string>
-    <string name="cf_result">除法结果四舍五入保留1位小数</string>
+    <string name="cf_result">除法结果四舍五入保留</string>
+    <string name="cf_result_end">位小数</string>
     <string name="use_time">用时:</string>
     <string name="djs_s">倒计时:</string>
     <string name="wd">未答</string>
@@ -49,9 +50,10 @@
     <string name="conti">继续</string>
     <string name="contin">continue</string>
     <string name="refresh">刷新</string>
-    <string name="about">关于</string>
+    <string name="about">关于和更新</string>
     <string name="cc_edit_info">除法结果四舍五入保留</string>
     <string name="cc_edit_info_end">位小数</string>
     <string name="settings_save_decimal">未设置保留小数位</string>
     <string name="save_decimal_max">建议范围0-5</string>
+    <string name="max_out">范围超出最大值</string>
 </resources>
