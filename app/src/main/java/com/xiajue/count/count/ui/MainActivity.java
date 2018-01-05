@@ -241,7 +241,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         String saveDecimalText = mCCEdit.getText().toString().trim();
         int saveDecimal = Integer.valueOf(saveDecimalText);
         intent.putExtra("saveDecimal", saveDecimal);
-        saveToConfig(type, model, numbers,numbers2, countNumber, djsTime, saveDecimal);
+        saveToConfig(type, model, numbers, numbers2, countNumber, djsTime, saveDecimal);
         return intent;
     }
 
@@ -271,43 +271,58 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Toast.makeText(this, R.string.ts_min, Toast.LENGTH_SHORT).show();
             return false;
         }
-        int[] number = getNumber(1);
-        int[] number2 = getNumber(2);
-        if (number == null || number2 == null) {
-            Toast.makeText(this, R.string.veal_null, Toast.LENGTH_SHORT).show();
+        try {
+            int[] number = getNumber(1);
+            int[] number2 = getNumber(2);
+            if (number == null || number2 == null) {
+                Toast.makeText(this, R.string.veal_null, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (number[0] >= number[1] || number2[0] >= number2[1]) {
+                Toast.makeText(this, R.string.select_error, Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            if (number[1] >= ConfigHelper.NUMBER_MAX_INT || number2[1] >= ConfigHelper
+                    .NUMBER_MAX_INT) {
+                Toast.makeText(this, getString(R.string.max_out) + ConfigHelper.NUMBER_MAX_INT,
+                        Toast
+                                .LENGTH_SHORT).show();
+                return false;
+            }
+            if (mDjsEdit.isShown()) {
+                String time = mDjsEdit.getText().toString();
+                if (time.isEmpty()) {
+                    Toast.makeText(this, R.string.select_un_time, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                int djsTime = 0;
+
+                djsTime = Integer.valueOf(time);
+
+                if (djsTime < 5) {
+                    Toast.makeText(this, R.string.time_d, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+            if (mCCEditRoot.isShown()) {
+                String saveDecimalText = mCCEdit.getText().toString();
+                if (saveDecimalText.isEmpty()) {
+                    Toast.makeText(this, R.string.settings_save_decimal, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                if (saveDecimalText.length() >= 2) {
+                    Toast.makeText(this, R.string.save_decimal_max, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                int saveDecimal = Integer.valueOf(saveDecimalText);
+                if (saveDecimal > 5 || saveDecimal < 0) {
+                    Toast.makeText(this, R.string.save_decimal_max, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            Toast.makeText(this, R.string.input_error, Toast.LENGTH_SHORT).show();
             return false;
-        }
-        if (number[0] >= number[1] || number2[0] >= number2[1]) {
-            Toast.makeText(this, R.string.select_error, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (number[1] >= ConfigHelper.NUMBER_MAX_INT || number2[1] >= ConfigHelper.NUMBER_MAX_INT) {
-            Toast.makeText(this, R.string.max_out+ConfigHelper.NUMBER_MAX_INT, Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        if (mDjsEdit.isShown()) {
-            String time = mDjsEdit.getText().toString();
-            if (time.isEmpty()) {
-                Toast.makeText(this, R.string.select_un_time, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            int djsTime = Integer.valueOf(time);
-            if (djsTime < 5) {
-                Toast.makeText(this, R.string.time_d, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        }
-        if (mCCEditRoot.isShown()) {
-            String saveDecimalText = mCCEdit.getText().toString();
-            if (saveDecimalText.isEmpty()) {
-                Toast.makeText(this, R.string.settings_save_decimal, Toast.LENGTH_SHORT).show();
-                return false;
-            }
-            int saveDecimal = Integer.valueOf(saveDecimalText);
-            if (saveDecimal >= 5 || saveDecimal < 0) {
-                Toast.makeText(this, R.string.save_decimal_max, Toast.LENGTH_SHORT).show();
-                return false;
-            }
         }
         return true;
     }

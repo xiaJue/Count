@@ -56,4 +56,5 @@
     <string name="settings_save_decimal">未设置保留小数位</string>
     <string name="save_decimal_max">建议范围0-5</string>
     <string name="max_out">范围超出最大值</string>
+    <string name="input_error">输入异常</string>
 </resources>
