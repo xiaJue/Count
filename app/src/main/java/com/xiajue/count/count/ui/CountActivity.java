@@ -72,7 +72,8 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         mCountNumber = intent.getIntExtra("count_number", 1);
         int saveDecimal = intent.getIntExtra("saveDecimal", 1);
         //build data list
-        mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber,saveDecimal)
+        mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber,
+                saveDecimal)
                 .build();
         mHandler.mCountNumber = mCountNumber;
         mHandler.mModel = mModel;
@@ -162,7 +163,10 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void finishCount() {
-        mHandler.mUseTime = mCountTime.getTime();
+        mNextButton.setEnabled(false);//防止多次点击
+        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
+            mHandler.mUseTime = mCountTime.getTime();
+        }
         Intent intent = new Intent(this, ResultActivity.class);
         intent.putExtra("count_handler", mHandler);
         startActivity(intent);
@@ -268,8 +272,9 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
 
     private void pauseDialog() {
         stopCountTime();
-        DialogManager.showInquiry(this, getString(R.string.pause_ing), new String[]{getString(R.string.conti),
-                getString(R.string.contin)},
+        DialogManager.showInquiry(this, getString(R.string.pause_ing), new String[]{getString(R
+                        .string.conti),
+                        getString(R.string.contin)},
                 new DialogInterface
                         .OnClickListener() {
                     @Override

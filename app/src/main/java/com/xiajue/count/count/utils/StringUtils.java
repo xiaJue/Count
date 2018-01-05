@@ -26,4 +26,21 @@ public class StringUtils {
         Date d1 = new Date(milliseconds);
         return format.format(d1);
     }
+
+    /**
+     * 省略一段字符串
+     *
+     * @param text     string
+     * @param length   length
+     * @param ellipsis ellipsis string
+     * @return
+     */
+    public static String ellipsis(String text, int length, String... ellipsis) {
+        if (text.length() - 1 < length) {
+            return text;
+        }
+        return text.substring(0, length) + (ellipsis != null && ellipsis.length > 0 ?
+                ellipsis[0]
+                : "...");
+    }
 }

@@ -156,6 +156,7 @@
                             android:textSize="20dp"/>
 
                     </LinearLayout>
+
                     <LinearLayout
                         android:id="@+id/main_cc_edit_root"
                         android:layout_width="match_parent"
@@ -189,6 +190,7 @@
                             android:text="@string/cc_edit_info_end"/>
 
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -232,6 +234,7 @@
                             android:text="@string/bjs"
                             android:textColor="@color/min_title_text_color"/>
                     </RadioGroup>
+
                     <LinearLayout
                         android:id="@+id/main_djs_edit_root"
                         android:layout_width="match_parent"
@@ -257,6 +260,7 @@
                             android:text="@string/mnwc"/>
 
                     </LinearLayout>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -317,6 +321,7 @@
             app:pkvDeleteBackgroundColor="#d2d2d2"
             app:pkvDeleteDrawable="@mipmap/delete"
             app:pkvHideDrawable="@mipmap/pocket_close"/>
+
     </LinearLayout>
 
 </ScrollView>

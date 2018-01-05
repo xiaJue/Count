@@ -49,7 +49,7 @@ public class ConfigHelper {
         SPUtils.put(context, KEY_NUMBER_TO, config.numbers[1]);
         SPUtils.put(context, KEY_COUNT_NUMBER, config.countNumber);
         SPUtils.put(context, KEY_UN_COUNT_TIME_MAX, config.unCountTimeMax);
-        SPUtils.put(context, KEY_BLXS, config.blxs);
+        SPUtils.put(context, KEY_BLXS, config.saveDecimal);
     }
 
     public static void setFractionTextColor(TextView tv, int fraction) {
@@ -68,18 +68,18 @@ public class ConfigHelper {
         public int[] numbers;
         public int countNumber;
         public int unCountTimeMax;
-        public int blxs;
+        public int saveDecimal;
 
         public Config() {
         }
 
-        public Config(int type, int model, int[] numbers, int countNumber, int unCountTimeMax,int blxs) {
+        public Config(int type, int model, int[] numbers, int countNumber, int unCountTimeMax,int saveDecimal) {
             this.type = type;
             this.model = model;
             this.numbers = numbers;
             this.countNumber = countNumber;
             this.unCountTimeMax = unCountTimeMax;
-            this.blxs = blxs;
+            this.saveDecimal = saveDecimal;
         }
     }
 }
