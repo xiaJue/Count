@@ -57,4 +57,8 @@
     <string name="save_decimal_max">建议范围0-5</string>
     <string name="max_out">范围超出最大值</string>
     <string name="input_error">输入异常</string>
+    <string name="un_count_time_max">超出最大限制3600秒(一小时)</string>
+    <string name="headerTitle">操作</string>
+    <string name="delete">删除</string>
+    <string name="delete_inquiry">确定删除该条目?</string>
 </resources>

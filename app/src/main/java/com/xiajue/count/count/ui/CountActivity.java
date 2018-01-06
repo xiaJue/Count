@@ -76,7 +76,7 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         mHandler = new CountBuild().initialize(mNumbers, mNumbers2, mType, mModel, mCountNumber,
                 saveDecimal)
                 .build();
-        mCfTsTextView.setText(getString(cf_result) +saveDecimal + getString(R.string
+        mCfTsTextView.setText(getString(cf_result) + saveDecimal + getString(R.string
                 .cf_result_end));
         mHandler.mCountNumber = mCountNumber;
         mHandler.mModel = mModel;
@@ -246,6 +246,7 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
     }
 
     private void reStartCountTime() {
+        isPauseCountTime = false;
         if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
             mCountTime.reStart();
         }
@@ -253,9 +254,11 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        mPauseMenuItem = menu.add(0, MENU_ITEM_ID_PAUSE, 0, R.string.pause);
-        mPauseMenuItem.setIcon(R.mipmap.pause);
-        mPauseMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        if (mModel != TypeModel.MODEL_NO_COUNT_TIME) {
+            mPauseMenuItem = menu.add(0, MENU_ITEM_ID_PAUSE, 0, R.string.pause);
+            mPauseMenuItem.setIcon(R.mipmap.pause);
+            mPauseMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -273,7 +276,10 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
         return super.onOptionsItemSelected(item);
     }
 
+    private boolean isPauseCountTime;//是否处于暂停状态
+
     private void pauseDialog() {
+        isPauseCountTime = true;
         stopCountTime();
         DialogManager.showInquiry(this, getString(R.string.pause_ing), new String[]{getString(R
                         .string.conti),
@@ -308,7 +314,9 @@ public class CountActivity extends BaseActivity implements View.OnClickListener 
     @Override
     protected void onResume() {
         super.onResume();
-        reStartCountTime();
+        if (!isPauseCountTime) {
+            reStartCountTime();
+        }
     }
 
     @Override

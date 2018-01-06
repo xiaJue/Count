@@ -80,6 +80,10 @@ public class CountTime {
         }
     }
 
+    public boolean isCountable() {
+        return countable;
+    }
+
     private Handler mHandler;
 
     {

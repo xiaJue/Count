@@ -303,6 +303,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     Toast.makeText(this, R.string.time_d, Toast.LENGTH_SHORT).show();
                     return false;
                 }
+                if (djsTime > 3600) {
+                    Toast.makeText(this, R.string.un_count_time_max, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
             }
             if (mCCEditRoot.isShown()) {
                 String saveDecimalText = mCCEdit.getText().toString();

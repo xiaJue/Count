@@ -9,12 +9,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:textSize="30sp"/>
+        android:paddingBottom="20dp"
+        android:textSize="@dimen/ph_fraction_text_size"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
+        android:layout_marginLeft="8dp"
         android:orientation="horizontal">
 
         <TextView
@@ -52,7 +53,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp">
+        android:layout_marginLeft="8dp">
 
         <TextView
             android:id="@+id/item_ph_use_time"

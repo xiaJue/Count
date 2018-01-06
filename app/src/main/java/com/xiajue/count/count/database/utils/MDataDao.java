@@ -34,10 +34,11 @@ public class MDataDao {
         mCBDao.insert(bean);
     }
 
-    /*public void delete(CountDataBean bean) {
+    public void delete(CountDataBean bean) {
         mCBDao.delete(bean);
     }
-    public void update(CountDataBean bean) {
+
+    /*public void update(CountDataBean bean) {
         mCBDao.update(bean);
     }*/
     public List<CountDataBean> selectAll() {
